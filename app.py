@@ -31,13 +31,15 @@ app.layout = dbc.Container([
     ]
     )
 
-@app.callback(
+@callback(
     Output("mapa", "figure"),
     Input("localidad_consultada", "value")
 )
 
 def update_map(localidad_consultada):
     return consultarLocalidad(localidad_consultada)
+
+
 
 
 if __name__ == '__main__' :
