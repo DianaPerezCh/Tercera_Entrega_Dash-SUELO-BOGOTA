@@ -27,11 +27,17 @@ DensidadPoblacional=gpd.read_file('data\Centroides_Manzanas.geojson')
 def consultarLocalidad(localidad_consultada):
 
     localidad_buscada = Localidades.query(f"LocNombre == '{localidad_consultada}'")
+    
+
     #ZonaSismica_RESSIS=ZonaSismica.set_index("RESSIS")
 
     #localidad_buscada_4326 = localidad_buscada.to_crs(epsg=4326)
 
     ZonaSismica_4686 = ZonaSismica.to_crs(epsg=4686)
+    #ZonaSismica_buscada = ZonaSismica_4686.query(f"LocNombre == '{localidad_consultada.upper()}'")
+
+
+
 
     ZonaSismica_Localidad = gpd.overlay(
     localidad_buscada, ZonaSismica_4686, how='intersection')
@@ -50,6 +56,8 @@ def consultarLocalidad(localidad_consultada):
         #legend=True,
         #legend_kwds={"loc":"upper left"}
     )
+
+    
 
 
 
