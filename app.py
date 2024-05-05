@@ -6,8 +6,7 @@ from PIL import Image
 
 # Se importa el franted
 from frontend.Presentacion import presentacion, Finalizacion
-from backend.respuesta_sismica import Tituto1, RespuestaSismica, Division, Poblacion_RespuestaSismica
-from backend.respuesta_sismica import DensidadPoblacional, consultarLocalidad, consultarZonaSismica
+from backend.respuesta_sismica import Tituto1, RespuestaSismica, consultarLocalidad, Division, Poblacion_RespuestaSismica
 from frontend.Zonificacion_Geotecnica import zonificacionGeotecnica
 from frontend.Geologia_Urbana import GeologiaUrbana
 from frontend.Geologia_Rural import Geologiarural
@@ -30,21 +29,20 @@ app.layout = dbc.Container([
         html.Hr(),
     zonificacionGeotecnica,
     GeologiaUrbana,
-    Geologiarural
+    Geologiarural,
+    Finalizacion
     ]
     )
 
+#Conexion con la funcion del mapa
 @callback(
     Output("mapa", "figure"),
     Input("localidad_consultada", "value")
 )
 
+#Funcion a conectar del mapa
 def update_map(localidad_consultada):
     return consultarLocalidad(localidad_consultada)
-
-
-
-
 
 if __name__ == '__main__' :
     app.run_server(debug=True)
