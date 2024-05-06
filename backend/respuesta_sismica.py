@@ -44,8 +44,8 @@ def consultarLocalidad(localidad_consultada):
     fig.update_layout(
 
         mapbox_style="open-street-map",
-        mapbox_zoom=8,
-        mapbox_center = {"lat": 4.33, "lon": -74.08},
+        mapbox_zoom=10,
+        mapbox_center = {"lat": 4.60971, "lon": -74.08175},
     )
     return fig
 
@@ -80,7 +80,7 @@ Poblacion_RespuestaSismica = dbc.Container(
     [
         html.H3('Zonificación del suelo'),
         html.Hr(),
-        dcc.RadioItems(ZonaSismica['RESSIS'].unique(), id='localidad_consultada',
+        dcc.RadioItems(ZonaSismica['RESSIS'].unique(), id='Zonasismica_consultada',
                     style={'background-color':'#FFCC80',"font-weight": "bold",'textAlign':'left'}),
         html.Hr(),
         html.H3('Cantidad de Habitantes'),
