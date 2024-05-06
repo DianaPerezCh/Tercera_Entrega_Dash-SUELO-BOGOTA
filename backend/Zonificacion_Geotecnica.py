@@ -5,10 +5,8 @@ from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 import geopandas as gpd
 import plotly.express as px
-import plotly.graph_objects as go
 
 # Titulo de la segunda seccion
-
 Tituto2 = html.H3('Zonificación Geotécnica')
 
 #Se importan las bases de datos

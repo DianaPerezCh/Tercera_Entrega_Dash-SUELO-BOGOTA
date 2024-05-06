@@ -7,7 +7,6 @@ import geopandas as gpd
 import plotly.express as px
 
 # Titulo de la tercera seccion
-
 Tituto3 = html.H3('Geología Urbana')
 
 #Se importan las bases de datos
@@ -26,7 +25,7 @@ def consultarLocalidad_2(localidad_consultada_2):
     #Se cambia a las coordenadas de las bases de datos deseadas
     Geologia_urbana_4686 = Geologia_urbana.to_crs(epsg=4686)
     
-    #Se sobrepone la base de datos recortada con la base de datos de la Zona sismica
+    #Se sobrepone la base de datos recortada con la base de datos de la geologia urbana
     Geologia_urbana_Localidad = gpd.overlay(
     localidad_buscada_2, Geologia_urbana_4686, how='intersection')
 
@@ -48,7 +47,7 @@ def consultarLocalidad_2(localidad_consultada_2):
     return fig_2
 
 
-#Se define el container de la parte izquierda de la primera sección
+#Se define el container de la parte izquierda de la tercera sección
 GeologiaUrbana = dbc.Container(
     [
        html.H3('Localidad'),
