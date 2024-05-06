@@ -37,7 +37,7 @@ def consultarLocalidad(localidad_consultada):
         geojson=ZonaSismica_Localidad.geometry,
         locations=ZonaSismica_Localidad.index,
         color_continuous_scale="Viridis",
-        opacity=0.3       
+        opacity=0.3      
     )
 
     #Se agrega diseño a la grafica

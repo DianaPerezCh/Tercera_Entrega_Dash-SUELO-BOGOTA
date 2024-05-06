@@ -8,7 +8,7 @@ from PIL import Image
 from frontend.Presentacion import presentacion, Finalizacion
 from backend.respuesta_sismica import Tituto1, RespuestaSismica, consultarLocalidad, Division, Poblacion_RespuestaSismica
 from backend.Zonificacion_Geotecnica import Tituto2, zonificacionGeotecnica, consultarLocalidad_1, Poblacion_zonificacionGeotecnica
-from frontend.Geologia_Urbana import GeologiaUrbana
+from backend.Geologia_Urbana import Tituto3, GeologiaUrbana, consultarLocalidad_2, Poblacion_GeologiaUrbana
 from frontend.Geologia_Rural import Geologiarural
 
 
@@ -27,7 +27,7 @@ app.layout = dbc.Container([
             dbc.Col(Poblacion_RespuestaSismica, md=4,style={'background-color':'#E67E22','textAlign':'center',"color":"black"}, ),
         ]),
         html.Hr(),
-            dbc.Row([
+        dbc.Row([
             dbc.Col(Tituto2, md=12,style={'background-color':'#186A3B','textAlign':'center',"color":"white"}, ),
         ]),
         html.Hr(),
@@ -37,7 +37,16 @@ app.layout = dbc.Container([
             dbc.Col(Poblacion_zonificacionGeotecnica, md=4,style={'background-color':'#E67E22','textAlign':'center',"color":"black"}, ),
         ]),
         html.Hr(),
-    GeologiaUrbana,
+        dbc.Row([
+            dbc.Col(Tituto3, md=12,style={'background-color':'#186A3B','textAlign':'center',"color":"white"}, ),
+        ]),
+        html.Hr(),
+        dbc.Row([
+            dbc.Col(GeologiaUrbana, md=7,style={'background-color':'#E67E22','textAlign':'center',"color":"black"}, ),
+            dbc.Col(Division, md=1,style={'background-color':'white','textAlign':'center',"color":"white"}, ),
+            dbc.Col(Poblacion_GeologiaUrbana, md=4,style={'background-color':'#E67E22','textAlign':'center',"color":"black"}, ),
+        ]),
+        html.Hr(),
     Geologiarural,
     Finalizacion
     ]
@@ -62,6 +71,16 @@ def update_map(localidad_consultada):
 #Funcion a conectar del mapa  - Seccion 2
 def update_map_1(localidad_consultada_1):
     return consultarLocalidad_1(localidad_consultada_1)
+
+#Conexion con la funcion del mapa  - Seccion 3
+@callback(
+    Output("mapa_2", "figure"),
+    Input("localidad_consultada_2", "value")
+)
+
+#Funcion a conectar del mapa  - Seccion 3
+def update_map_2(localidad_consultada_2):
+    return consultarLocalidad_2(localidad_consultada_2)
 
 if __name__ == '__main__' :
     app.run_server(debug=True)
